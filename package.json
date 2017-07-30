@@ -8,7 +8,14 @@
     "coverage": "jest --coverage",
     "cleanup": "eslint *.js **/*.js -- --fix; exit 0"
   },
-  "author": "Alex Greenland <alex+npm@alexgreenland.com>",
+  "author": {
+    "name": "Alex Greenland",
+    "email": "alex+npm@alexgreenland.com",
+    "url": "ajrg.co"
+  },
+  "engines": {
+    "node": ">=4"
+  },
   "license": "Apache-2.0",
   "dependencies": {
     "is-url": "^1.2.2",
