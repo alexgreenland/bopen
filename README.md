@@ -82,7 +82,7 @@ Opens the location with optional options. Returns a promise with the command and
 
 #### browser
 
-`string`. Optional. Default: default browser. Open the URL in the specified browser. The browser name is platform independent — you do not need to reference the platform specific app name. Use the [Browsers](#browsers) table for reference. For example, with Google Chrome, the `bopen` browser is "chrome". The `browser` option overrides `app`.
+`string`. Optional. Default: default browser. Open the URL in the specified browser. The browser name is platform agnostic — you do not need to reference the platform specific app name. Use the [Browsers](#browsers) table for reference. For example, with Google Chrome, the `bopen` browser is "chrome". The `browser` option overrides `app`.
 
 #### incognito
 
