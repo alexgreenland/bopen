@@ -5,11 +5,9 @@ A better native open utility for macOS and Windows, with emphasis on browsers an
 ## Supported Platforms
 
 - macOS. Tested in Chrome, Firefox and Safari. Optimised for Chrome and Firefox.
-- Windows 10. Tested in Chrome and Edge. Optimised for Chrome.
-- Windows 7. Tested in Chrome and IE. Optimised for Chrome and IE.
+- Windows. Tested in Chrome and Edge. Optimised for Chrome and IE.
 
-Incognito launch support for Chrome, Firefox and IE.
-
+Incognito launch support for Chrome, Firefox and IE. Edge incognito support is awaiting command line switch support from Microsoft.
 
 ## License
 
