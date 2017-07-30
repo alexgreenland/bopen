@@ -51,7 +51,7 @@ bopen('image.png', {app: 'preview'})
 
 ## Browsers
 
-| Browser           | `bopen` browser | Incognito/private mode launch support |
+| Browser           | `bopen` name    | Incognito/private mode launch support |
 |-------------------|-----------------|---------------------------------------|
 | Google Chrome     | chrome          | Yes (Incognito)                       |
 | Mozilla Firefox   | firefox         | Yes (Private)                         |
