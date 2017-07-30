@@ -4,7 +4,8 @@
   "description": "A better native open utility. Open URLs, paths and locators in the default or specified browser with options including opening in incognito mode. Cross-platform.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "cleanup": "eslint *.js __mocks__ __tests__ --fix"
   },
   "author": "Alex Greenland <alex+npm@alexgreenland.com>",
   "license": "Apache-2.0",
@@ -13,6 +14,13 @@
     "x-default-browser": "^0.4.0"
   },
   "devDependencies": {
-    "jest": "^20.0.4"
+    "eslint": "^4.3.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^20.0.4",
+    "prettier": "^1.5.3"
   }
 }

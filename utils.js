@@ -8,7 +8,7 @@ exports.getDefaultBrowser = () => {
       if (err) {
         reject(err)
       }
-      
+
       resolve(browser.commonName)
     })
   })

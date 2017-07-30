@@ -4,12 +4,12 @@ jest.mock('../utils')
 
 describe('On Windows with Chrome as default browser', () => {
   const outputOnly = true
-  
+
   beforeEach(() => {
     global.process.platform = 'win32'
     require('../utils').__setMockDefaultBrowser('chrome')
   })
-  
+
   test('opens a URL', () => {
     return bopen('http://example.com/', {
       outputOnly: outputOnly
@@ -32,7 +32,7 @@ describe('On Windows with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Chrome', () => {
     return bopen('http://example.com/', {
       browser: 'chrome',
@@ -57,7 +57,7 @@ describe('On Windows with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Edge', () => {
     return bopen('http://example.com/', {
       browser: 'edge',
@@ -69,7 +69,7 @@ describe('On Windows with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in IE', () => {
     return bopen('http://example.com/', {
       browser: 'ie',
@@ -81,7 +81,7 @@ describe('On Windows with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in IE in incognito', () => {
     return bopen('http://example.com/', {
       browser: 'ie',
@@ -98,12 +98,12 @@ describe('On Windows with Chrome as default browser', () => {
 
 describe('On macOS with Chrome as default browser', () => {
   const outputOnly = true
-  
+
   beforeEach(() => {
     global.process.platform = 'darwin'
     require('../utils').__setMockDefaultBrowser('chrome')
   })
-  
+
   test('opens a URL', () => {
     return bopen('http://example.com/', {
       outputOnly: outputOnly
@@ -126,7 +126,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Chrome', () => {
     return bopen('http://example.com/', {
       browser: 'chrome',
@@ -138,7 +138,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Chrome in incognito', () => {
     return bopen('http://example.com/', {
       browser: 'chrome',
@@ -151,7 +151,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Firefox', () => {
     return bopen('http://example.com/', {
       browser: 'firefox',
@@ -163,7 +163,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Firefox in incognito', () => {
     return bopen('http://example.com/', {
       browser: 'firefox',
@@ -176,7 +176,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Safari', () => {
     return bopen('http://example.com/', {
       browser: 'safari',
@@ -188,5 +188,4 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
 })
