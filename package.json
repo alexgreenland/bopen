@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "cleanup": "eslint *.js __mocks__ __tests__ --fix"
+    "cleanup": "eslint *.js **/*.js -- --fix; exit 0"
   },
   "author": "Alex Greenland <alex+npm@alexgreenland.com>",
   "license": "Apache-2.0",
@@ -20,7 +20,6 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "jest": "^20.0.4",
-    "prettier": "^1.5.3"
+    "jest": "^20.0.4"
   }
 }
