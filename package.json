@@ -21,5 +21,23 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "jest": "^20.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexgreenland/bopen.git"
+  },
+  "keywords": [
+    "node",
+    "open",
+    "browser",
+    "opener",
+    "opens",
+    "launch",
+    "start",
+    "url"
+  ],
+  "bugs": {
+    "url": "https://github.com/alexgreenland/bopen/issues"
+  },
+  "homepage": "https://github.com/alexgreenland/bopen#readme"
 }
