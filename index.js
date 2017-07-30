@@ -11,7 +11,9 @@ const MACOS_BROWSERS = {
 }
 
 const WINDOWS_BROWSERS = {
-  'chrome': 'Chrome'
+  'chrome': 'Chrome',
+  'ie': 'iexplore',
+  'edge': 'microsoft-edge'
 }
 
 const INCOGNITOS = {
