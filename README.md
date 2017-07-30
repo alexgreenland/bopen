@@ -1,6 +1,6 @@
 # bopen
 
-[![npm version](https://badge.fury.io/js/bopen.svg)](https://badge.fury.io/js/bopen)
+[![npm version](https://badge.fury.io/js/bopen.svg)](https://badge.fury.io/js/bopen) [![Travis](https://img.shields.io/travis/alexgreenland/bopen.svg)]()
 
 A better native open utility for macOS and Windows, with emphasis on browsers and sugar for common configuration. Open URLs, file paths and other locators as supported by your system. 
 
