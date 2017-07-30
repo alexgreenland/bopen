@@ -44,7 +44,7 @@ const open = (location, options) => {
           app = MACOS_BROWSERS[browser]
         }
         
-        if (options.incognito && browser) {
+        if (options.incognito && browser && INCOGNITOS[browser]) {
           args.push('-n')
           appArgs.push(INCOGNITOS[browser])
         }
@@ -75,7 +75,13 @@ const open = (location, options) => {
       }
       
       if (app) {
-        args.push(app)
+        let appForArgs = app
+        
+        if (browser === 'edge') {
+          appForArgs = `${app}:${location}`
+        }
+        
+        args.push(appForArgs)
       }
       
       if (appArgs.length !== 0) {
@@ -86,7 +92,9 @@ const open = (location, options) => {
       reject(new Error(`Platform ${process.platform} not supported.`))
     }
     
-    args.push(location)
+    if (browser !== 'edge') {
+      args.push(location) 
+    }
     
     if (!options.outputOnly) {
       childProcess.spawn(cmd, args)

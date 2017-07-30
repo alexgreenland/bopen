@@ -57,6 +57,43 @@ describe('On Windows with Chrome as default browser', () => {
       })
     })
   })
+  
+  test('opens a URL in Edge', () => {
+    return bopen('http://example.com/', {
+      browser: 'edge',
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'cmd',
+        args: ['/c', 'start', '""', 'microsoft-edge:http://example.com/']
+      })
+    })
+  })
+  
+  test('opens a URL in IE', () => {
+    return bopen('http://example.com/', {
+      browser: 'ie',
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'cmd',
+        args: ['/c', 'start', '""', 'iexplore', 'http://example.com/']
+      })
+    })
+  })
+  
+  test('opens a URL in IE in incognito', () => {
+    return bopen('http://example.com/', {
+      browser: 'ie',
+      incognito: true,
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'cmd',
+        args: ['/c', 'start', '""', 'iexplore', '-private', 'http://example.com/']
+      })
+    })
+  })
 })
 
 describe('On macOS with Chrome as default browser', () => {
