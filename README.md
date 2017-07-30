@@ -1,6 +1,6 @@
 # bopen
 
-A better native open utility for macOS and Windows, with emphasis on browsers and sugar for common configuration. Open URLs, file paths and other locators as supported by your system. Provide the location and optionally the target browser or application, and whether to open in incognito/private mode, alongside initial arguments and app arguments. `bopen` spawns the target process for improved safety.
+A better native open utility for macOS and Windows, with emphasis on browsers and sugar for common configuration. Open URLs, file paths and other locators as supported by your system. Provide the location and optionally the target browser or application, and whether to open in incognito/private mode, alongside initial arguments and app arguments. Rather than forks, `bopen` spawns the target process for improved safety.
 
 ## Install
 
