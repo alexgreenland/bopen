@@ -94,6 +94,31 @@ describe('On Windows with Chrome as default browser', () => {
       })
     })
   })
+  
+  test('opens a URL in Firefox', () => {
+    return bopen('http://example.com/', {
+      browser: 'firefox',
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'cmd',
+        args: ['/c', 'start', '""', 'firefox', 'http://example.com/']
+      })
+    })
+  })
+  
+  test('opens a URL in Firefox in incognito', () => {
+    return bopen('http://example.com/', {
+      browser: 'firefox',
+      incognito: true,
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'cmd',
+        args: ['/c', 'start', '""', 'firefox', '-private-window', 'http://example.com/']
+      })
+    })
+  })
 })
 
 describe('On macOS with Chrome as default browser', () => {

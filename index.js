@@ -13,6 +13,7 @@ const MACOS_BROWSERS = {
 const WINDOWS_BROWSERS = {
   'chrome': 'Chrome',
   'ie': 'iexplore',
+  'firefox': 'firefox',
   'edge': 'microsoft-edge'
 }
 
