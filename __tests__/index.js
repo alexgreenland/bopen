@@ -176,6 +176,46 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
+  
+  test('opens a URL in Chrome with specified first args', () => {
+    return bopen('http://example.com/', {
+      browser: 'chrome',
+      args: ['-n'],
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'open',
+        args: ['-n', '-a', 'google chrome', 'http://example.com/']
+      })
+    })
+  })
+  
+  test('opens a URL in Chrome with specified app args', () => {
+    return bopen('http://example.com/', {
+      browser: 'chrome',
+      appArgs: ['--some-app-args', '-more-app-args'],
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'open',
+        args: ['-a', 'google chrome', '--args', '--some-app-args', '-more-app-args', 'http://example.com/']
+      })
+    })
+  })
+  
+  test('opens a URL in Chrome with specified first args and app args', () => {
+    return bopen('http://example.com/', {
+      browser: 'chrome',
+      args: ['-n'],
+      appArgs: ['--some-app-args', '-more-app-args'],
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'open',
+        args: ['-n', '-a', 'google chrome', '--args', '--some-app-args', '-more-app-args', 'http://example.com/']
+      })
+    })
+  })
 
   test('opens a URL in Firefox', () => {
     return bopen('http://example.com/', {
@@ -197,7 +237,7 @@ describe('On macOS with Chrome as default browser', () => {
     }).then((result) => {
       expect(result).toEqual({
         cmd: 'open',
-        args: ['-n', '-a', 'firefox', '--args', '-private-window', 'http://example.com/']
+        args: ['-a', 'firefox', '--args', '-private-window', 'http://example.com/']
       })
     })
   })
@@ -211,6 +251,89 @@ describe('On macOS with Chrome as default browser', () => {
         cmd: 'open',
         args: ['-a', 'safari', 'http://example.com/']
       })
+    })
+  })
+  
+  test('opens a path in the default application', () => {
+    return bopen('package.json', {
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'open',
+        args: ['package.json']
+      })
+    })
+  })
+  
+  test('opens a path in the specified application', () => {
+    return bopen('package.json', {
+      app: 'preview',
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'open',
+        args: ['-a', 'preview', 'package.json']
+      })
+    })
+  })
+  
+  test('opens a path with outputOnly not set', () => {
+    return bopen('index.js', {
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'open',
+        args: ['index.js']
+      })
+    })
+  })
+  
+  test('fails correctly with undefined location', () => {
+    return bopen(undefined, {
+      outputOnly: outputOnly
+    }).catch((result) => {
+      expect(result).toEqual(new Error('No location specified'))
+    })
+  })
+  
+  test('fails correctly with null location', () => {
+    return bopen(null, {
+      outputOnly: outputOnly
+    }).catch((result) => {
+      expect(result).toEqual(new Error('No location specified'))
+    })
+  })
+})
+
+describe('On an unsupported platform', () => {
+  const outputOnly = true
+
+  beforeEach(() => {
+    global.process.platform = 'linux'
+    require('../utils').__setMockDefaultBrowser('chrome')
+  })
+
+  test('fails correctly with null location', () => {
+    return bopen('http://example.com', {
+      outputOnly: outputOnly
+    }).catch((result) => {
+      expect(result).toEqual(new Error('The platform "linux" is not supported'))
+    })
+  })
+})
+
+describe('On macOS with no default browser found', () => {
+  const outputOnly = true
+
+  beforeEach(() => {
+    global.process.platform = 'darwin'
+    require('../utils').__setMockDefaultBrowser(null)
+  })
+
+  test('fails correctly with no default browser found', () => {
+    return bopen('http://example.com', {
+      outputOnly: outputOnly
+    }).catch((result) => {
+      expect(result).toEqual(new Error('No default browser found'))
     })
   })
 })

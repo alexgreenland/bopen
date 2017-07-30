@@ -46,7 +46,9 @@ const open = (location, options) => {
         }
 
         if (options.incognito && browser && INCOGNITOS[browser]) {
-          args.push('-n')
+          if (browser === 'chrome') {
+             args.push('-n') 
+          }
           appArgs.push(INCOGNITOS[browser])
         }
       }
@@ -88,7 +90,7 @@ const open = (location, options) => {
         args = args.concat(appArgs)
       }
     } else {
-      reject(new Error(`Platform ${process.platform} not supported.`))
+      reject(new Error(`The platform "${process.platform}" is not supported`))
     }
 
     if (browser !== 'edge') {

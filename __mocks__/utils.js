@@ -10,7 +10,10 @@ let __setMockDefaultBrowser = (defaultBrowser) => {
 
 let getDefaultBrowser = () => {
   return new Promise((resolve, reject) => {
-    resolve(mockedDefaultBrowser)
+    if (mockedDefaultBrowser) {
+      return resolve(mockedDefaultBrowser)
+    }
+    reject('No default browser')
   })
 }
 

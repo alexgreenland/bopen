@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "coverage": "jest --coverage",
     "cleanup": "eslint *.js **/*.js -- --fix; exit 0"
   },
   "author": "Alex Greenland <alex+npm@alexgreenland.com>",
