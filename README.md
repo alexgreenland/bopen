@@ -11,7 +11,7 @@ $ npm install --save bopen
 ## Usage
 
 ```js
-const bopen = require('bopen)
+const bopen = require('bopen')
 
 // Open URL in default browser
 bopen('http://example.com')
