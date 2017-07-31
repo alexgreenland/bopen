@@ -13,7 +13,7 @@ let getDefaultBrowser = () => {
     if (mockedDefaultBrowser) {
       return resolve(mockedDefaultBrowser)
     }
-    reject('No default browser')
+    reject(new Error('No default browser'))
   })
 }
 

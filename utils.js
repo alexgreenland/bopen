@@ -6,7 +6,7 @@ exports.getDefaultBrowser = () => {
   return new Promise((resolve, reject) => {
     DefaultBrowser((err, browser) => {
       if (err) {
-        reject(err)
+        reject(new Error(err))
       }
 
       resolve(browser.commonName)

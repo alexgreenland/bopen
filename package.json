@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "coverage": "jest --coverage",
-    "cleanup": "eslint *.js **/*.js -- --fix; exit 0"
+    "cleanup": "eslint *.js **/*.js --fix; exit 0"
   },
   "author": {
     "name": "Alex Greenland",

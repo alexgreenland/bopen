@@ -47,7 +47,7 @@ const open = (location, options) => {
 
         if (options.incognito && browser && INCOGNITOS[browser]) {
           if (browser === 'chrome') {
-             args.push('-n') 
+            args.push('-n')
           }
           appArgs.push(INCOGNITOS[browser])
         }
