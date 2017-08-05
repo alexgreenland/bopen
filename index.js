@@ -105,7 +105,11 @@ const open = (location, options) => {
 
     if (!isToOpenInSafariInIncognito) {
       if (!options.outputOnly) {
-        childProcess.spawn(cmd, args)
+        const child = childProcess.spawn(cmd, args, {
+          detached: true,
+          stdio: 'ignore'
+        })
+        child.unref()
       }
 
       resolve({
