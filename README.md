@@ -53,15 +53,15 @@ bopen('image.png')
 bopen('image.png', {app: 'preview'})
 ```
 
-## Browsers
+## Supported Browsers
 
 | Browser           | `bopen` name    | Incognito/private mode launch support |
 |-------------------|-----------------|---------------------------------------|
 | Google Chrome     | chrome          | Yes (Incognito)                       |
 | Mozilla Firefox   | firefox         | Yes (Private)                         |
 | Internet Explorer | ie              | Yes (InPrivate)                       |
+| Safari            | safari          | Yes (Private)                         |
 | Microsoft Edge    | edge            | No                                    |
-| Safari            | safari          | No (planned)                          |
 
 ## Supported Platforms
 
