@@ -36,13 +36,19 @@ const open = (location, options) => {
     let app = options.app
     let args = options.args || []
     let appArgs = options.appArgs || []
+    let isAUrl = isUrl(location)
+    let isToOpenInSafariInIncognito = false
 
     if (process.platform === 'darwin') {
       cmd = 'open'
 
-      if (isUrl(location)) {
+      if (isAUrl) {
         if (!app && browser) {
           app = MACOS_BROWSERS[browser]
+        }
+
+        if (browser === 'safari' && options.incognito) {
+          isToOpenInSafariInIncognito = true
         }
 
         if (options.incognito && browser && INCOGNITOS[browser]) {
@@ -66,7 +72,7 @@ const open = (location, options) => {
       args.push('/c', 'start', '""')
       location = location.replace(/&/g, '^&')
 
-      if (isUrl(location)) {
+      if (isAUrl) {
         if (!app && browser) {
           app = WINDOWS_BROWSERS[browser]
         }
@@ -97,14 +103,22 @@ const open = (location, options) => {
       args.push(location)
     }
 
-    if (!options.outputOnly) {
-      childProcess.spawn(cmd, args)
-    }
+    if (!isToOpenInSafariInIncognito) {
+      if (!options.outputOnly) {
+        childProcess.spawn(cmd, args)
+      }
 
-    resolve({
-      cmd: cmd,
-      args: args
-    })
+      resolve({
+        cmd: cmd,
+        args: args
+      })
+    } else {
+      utils.openSafariIncognito(location).then(response => {
+        resolve(response)
+      }).catch(reason => {
+        reject(reason)
+      })
+    }
   })
 }
 

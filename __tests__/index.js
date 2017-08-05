@@ -253,7 +253,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+    
   test('opens a path in the default application', () => {
     return bopen('package.json', {
       outputOnly: outputOnly

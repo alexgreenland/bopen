@@ -5,3 +5,10 @@ test('default browser to be returned', () => {
     expect(result).toBeTruthy()
   })
 })
+
+test('open Safari incognito should work', () => {
+  return utils.openSafariIncognito('http://example.com/').then((result) => {
+    expect.assertions(1)
+    expect(result).toBeFalsy()
+  })
+})
