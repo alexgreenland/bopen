@@ -15,13 +15,21 @@ exports.getDefaultBrowser = () => {
   })
 }
 
+exports.activateApp = (name) => {
+  if (process.platform === 'darwin') {
+    setTimeout(() => {
+      applescript.execString(`activate application "${name}"`)        
+    }, 500)
+  }
+}
+
 exports.openSafariIncognito = (url) => {
   return new Promise((resolve, reject) => {
     if (process.platform !== 'darwin') {
       return reject(new Error('Unsupported platform. macOS only'))
     }
 
-    let script = `
+    const script = `
       on isRunning(appName)
         tell application "System Events" to (name of processes) contains appName
       end isRunning

@@ -110,6 +110,7 @@ const open = (location, options) => {
           stdio: 'ignore'
         })
         child.unref()
+        utils.activateApp(app)
       }
 
       resolve({
