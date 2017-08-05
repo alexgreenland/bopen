@@ -1,10 +1,12 @@
 # bopen
 
-[![npm version](https://badge.fury.io/js/bopen.svg)](https://badge.fury.io/js/bopen) [![Travis](https://img.shields.io/travis/alexgreenland/bopen.svg)]()
+[![npm version](https://badge.fury.io/js/bopen.svg)](https://www.npmjs.com/package/bopen) [![Travis](https://img.shields.io/travis/alexgreenland/bopen.svg)]()
 
 A better native open utility for macOS and Windows, with emphasis on browsers and sugar for common configuration. Open URLs, file paths and other locators as supported by your system. 
 
-Provide the location and optionally the target browser or application, and whether to open in incognito/private mode, alongside initial arguments and app arguments. Rather than forking, `bopen` spawns the target process for improved safety.
+Provide the location and optionally the target browser or application, and whether to open in incognito/private mode, alongside initial arguments and app arguments. Rather than `exec`, `bopen` spawns the target process for improved safety.
+
+See [bopen-cli](https://github.com/alexgreenland/bopen-cli) ([NPM](https://www.npmjs.com/package/bopen-cli)) for the CLI.
 
 ## Install
 
