@@ -104,19 +104,20 @@ const open = (location, options) => {
     }
 
     if (!isToOpenInSafariInIncognito) {
-      if (!options.outputOnly) {
-        const child = childProcess.spawn(cmd, args, {
-          detached: true,
-          stdio: 'ignore'
-        })
-        child.unref()
-        utils.activateApp(app)
-      }
-
-      resolve({
+      let resolution = {
         cmd: cmd,
         args: args
-      })
+      }
+      if (!options.outputOnly) {
+        let child = childProcess.spawn(cmd, args)
+        child.unref()
+        utils.activateApp(app)
+        resolution.process = child
+        resolve(resolution)
+      } else {
+        resolve(resolution)
+      }
+      
     } else {
       utils.openSafariIncognito(location).then(response => {
         resolve(response)

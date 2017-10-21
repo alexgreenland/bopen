@@ -280,10 +280,8 @@ describe('On macOS with Chrome as default browser', () => {
   test('opens a path with outputOnly not set', () => {
     return bopen('index.js', {
     }).then((result) => {
-      expect(result).toEqual({
-        cmd: 'open',
-        args: ['index.js']
-      })
+      expect(result.cmd).toEqual('open')
+      expect(result.args).toEqual(['index.js'])
     })
   })
   
