@@ -1,6 +1,6 @@
 {
   "name": "bopen",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "A better native open utility. Open URLs, paths and locators in the default or specified browser with options including opening in incognito mode. Cross-platform.",
   "main": "index.js",
   "scripts": {
