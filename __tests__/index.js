@@ -139,6 +139,53 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
+  
+  test('opens a file URL', () => {
+    return bopen('file:///Users/ajrg', {
+      outputOnly: outputOnly,
+      incognito: false
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'open',
+        args: ['file:///Users/ajrg']
+      })
+    })
+  })
+  
+  test('opens a file path', () => {
+    return bopen('/Users/ajrg', {
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'open',
+        args: ['/Users/ajrg']
+      })
+    })
+  })
+  
+  test('opens a file URL with a file', () => {
+    return bopen('file:///Users/ajrg/test.app', {
+      outputOnly: outputOnly,
+      incognito: false
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'open',
+        args: ['file:///Users/ajrg/test.app']
+      })
+    })
+  })
+  
+  test('opens a file path with a file', () => {
+    return bopen('file:///Users/ajrg/test.app', {
+      outputOnly: outputOnly,
+      incognito: false
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'open',
+        args: ['file:///Users/ajrg/test.app']
+      })
+    })
+  })
 
   test('opens a URL in incognito', () => {
     return bopen('http://example.com/', {

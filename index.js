@@ -23,6 +23,10 @@ const INCOGNITOS = {
   'ie': '-private'
 }
 
+const isExternalUrl = (location) => {
+  return isUrl(location) && location.substring(0, 5) !== 'file:'
+}
+
 const open = (location, options) => {
   return new Promise((resolve, reject) => {
     if (typeof location !== 'string') {
@@ -36,7 +40,7 @@ const open = (location, options) => {
     let app = options.app
     let args = options.args || []
     let appArgs = options.appArgs || []
-    let isAUrl = isUrl(location)
+    let isAUrl = isExternalUrl(location)
     let isToOpenInSafariInIncognito = false
 
     if (process.platform === 'darwin') {
