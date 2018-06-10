@@ -32,6 +32,31 @@ describe('On Windows with Chrome as default browser', () => {
       })
     })
   })
+  
+  test('opens a URL in the background', () => {
+    return bopen('http://example.com/', {
+      background: true,
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'cmd',
+        args: ['/c', 'start', '/min', '""', 'Chrome', 'http://example.com/']
+      })
+    })
+  })
+  
+  test('opens a URL in incognito in the background', () => {
+    return bopen('http://example.com/', {
+      background: true,
+      incognito: true,
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'cmd',
+        args: ['/c', 'start', '/min', '""', 'Chrome', '--incognito', 'http://example.com/']
+      })
+    })
+  })
 
   test('opens a URL in Chrome', () => {
     return bopen('http://example.com/', {
@@ -220,6 +245,33 @@ describe('On macOS with Chrome as default browser', () => {
       expect(result).toEqual({
         cmd: 'open',
         args: ['-n', '-a', 'google chrome', '--args', '--incognito', 'http://example.com/']
+      })
+    })
+  })
+  
+  test('opens a URL in Chrome in the background', () => {
+    return bopen('http://example.com/', {
+      browser: 'chrome',
+      background: true,
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'open',
+        args: ['-g', '-a', 'google chrome', 'http://example.com/']
+      })
+    })
+  })
+  
+  test('opens a URL in Chrome in incognito in the background', () => {
+    return bopen('http://example.com/', {
+      browser: 'chrome',
+      incognito: true,
+      background: true,
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'open',
+        args: ['-n', '-g', '-a', 'google chrome', '--args', '--incognito', 'http://example.com/']
       })
     })
   })

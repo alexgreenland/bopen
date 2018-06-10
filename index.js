@@ -61,6 +61,10 @@ const open = (location, options) => {
           }
           appArgs.push(INCOGNITOS[browser])
         }
+        
+        if (options.background) {
+          args.push('-g')
+        }
       }
 
       if (app) {
@@ -73,7 +77,13 @@ const open = (location, options) => {
       }
     } else if (process.platform === 'win32') {
       cmd = 'cmd'
-      args.push('/c', 'start', '""')
+      args.push('/c', 'start')
+      
+      if (options.background) {
+        args.push('/min')
+      }
+      
+      args.push('""')
       location = location.replace(/&/g, '^&')
 
       if (isAUrl) {
@@ -115,7 +125,11 @@ const open = (location, options) => {
       if (!options.outputOnly) {
         let child = childProcess.spawn(cmd, args)
         child.unref()
-        utils.activateApp(app)
+        
+        if (!options.background) {
+          utils.activateApp(app)
+        }
+        
         resolution.process = child
         resolve(resolution)
       } else {

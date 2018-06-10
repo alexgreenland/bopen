@@ -40,6 +40,9 @@ bopen('http://example.com', {browser: 'safari'})
 // Open URL in Google Chrome in incognito mode
 bopen('http://example.com', {browser: 'chrome', incognito: true})
 
+// Open URL in Google Chrome in incognito mode in the background
+bopen('http://example.com', {browser: 'chrome', incognito: true, background: true})
+
 // Open URL in Internet Explorer with InPrivate mode
 bopen('http://example.com', {browser: 'ie', incognito: true})
 
@@ -91,6 +94,10 @@ Opens the location with optional options. Returns a promise with the command and
 #### incognito
 
 `boolean`. Optional. Default: `false`. Open the URL in the browser's incognito mode.
+
+#### background
+
+`boolean`. Optional. Default: `false`. Open the path in the background.
 
 #### app
 
