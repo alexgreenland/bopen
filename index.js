@@ -149,15 +149,24 @@ const open = (location, options) => {
 module.exports = (location, opts) => {
   return new Promise((resolve, reject) => {
     let options = opts || {}
-    utils.getDefaultBrowser().then((defaultBrowser) => {
-      options.defaultBrowser = defaultBrowser
+
+    if (options.browser) {
       open(location, options).then((response) => {
-        resolve(response)
+        return resolve(response)
       }).catch((reason) => {
         return reject(reason)
       })
-    }).catch(() => {
-      return reject(new Error('No default browser found'))
-    })
+    } else {
+      utils.getDefaultBrowser().then((defaultBrowser) => {
+        options.defaultBrowser = defaultBrowser
+        open(location, options).then((response) => {
+          return resolve(response)
+        }).catch((reason) => {
+          return reject(reason)
+        })
+      }).catch(() => {
+        return reject(new Error('No default browser found'))
+      })
+    }
   })
 }
