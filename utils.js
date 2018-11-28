@@ -18,7 +18,7 @@ exports.getDefaultBrowser = () => {
 exports.activateApp = (name) => {
   if (process.platform === 'darwin') {
     setTimeout(() => {
-      applescript.execString(`activate application "${name}"`)        
+      applescript.execString(`activate application "${name}"`)
     }, 500)
   }
 }

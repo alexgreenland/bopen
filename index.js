@@ -61,7 +61,7 @@ const open = (location, options) => {
           }
           appArgs.push(INCOGNITOS[browser])
         }
-        
+
         if (options.background) {
           args.push('-g')
         }
@@ -78,11 +78,11 @@ const open = (location, options) => {
     } else if (process.platform === 'win32') {
       cmd = 'cmd'
       args.push('/c', 'start')
-      
+
       if (options.background) {
         args.push('/min')
       }
-      
+
       args.push('""')
       location = location.replace(/&/g, '^&')
 
@@ -125,17 +125,16 @@ const open = (location, options) => {
       if (!options.outputOnly) {
         let child = childProcess.spawn(cmd, args)
         child.unref()
-        
+
         if (!options.background) {
           utils.activateApp(app)
         }
-        
+
         resolution.process = child
         resolve(resolution)
       } else {
         resolve(resolution)
       }
-      
     } else {
       utils.openSafariIncognito(location).then(response => {
         resolve(response)
