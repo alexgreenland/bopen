@@ -6,7 +6,9 @@ describe('On Windows with Chrome as default browser', () => {
   const outputOnly = true
 
   beforeEach(() => {
-    global.process.platform = 'win32'
+    Object.defineProperty(process, 'platform', {
+      value: 'win32'
+    })
     require('../utils').__setMockDefaultBrowser('chrome')
   })
 
@@ -150,7 +152,9 @@ describe('On macOS with Chrome as default browser', () => {
   const outputOnly = true
 
   beforeEach(() => {
-    global.process.platform = 'darwin'
+    Object.defineProperty(process, 'platform', {
+      value: 'darwin'
+    })
     require('../utils').__setMockDefaultBrowser('chrome')
   })
 
@@ -405,7 +409,9 @@ describe('On an unsupported platform', () => {
   const outputOnly = true
 
   beforeEach(() => {
-    global.process.platform = 'linux'
+    Object.defineProperty(process, 'platform', {
+      value: 'linux'
+    })
     require('../utils').__setMockDefaultBrowser('chrome')
   })
 
@@ -422,7 +428,9 @@ describe('On macOS with no default browser found', () => {
   const outputOnly = true
 
   beforeEach(() => {
-    global.process.platform = 'darwin'
+    Object.defineProperty(process, 'platform', {
+      value: 'darwin'
+    })
     require('../utils').__setMockDefaultBrowser(null)
   })
 
