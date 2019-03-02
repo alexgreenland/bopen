@@ -8,7 +8,8 @@ const MACOS_BROWSERS = {
   'chrome': 'google chrome',
   'firefox': 'firefox',
   'safari': 'safari',
-  'brave': 'brave browser'
+  'brave': 'brave browser',
+  'opera': 'opera'
 }
 
 const WINDOWS_BROWSERS = {
@@ -16,14 +17,16 @@ const WINDOWS_BROWSERS = {
   'ie': 'iexplore',
   'firefox': 'firefox',
   'edge': 'microsoft-edge',
-  'brave': 'Brave'
+  'brave': 'Brave',
+  'opera': 'Opera'
 }
 
 const INCOGNITOS = {
   'chrome': '--incognito',
   'firefox': '-private-window',
   'ie': '-private',
-  'brave': '--incognito'
+  'brave': '--incognito',
+  'opera': '--private'
 }
 
 const isExternalUrl = (location) => {
@@ -56,6 +59,10 @@ const open = (location, options) => {
 
         if (browser === 'safari' && options.incognito) {
           isToOpenInSafariInIncognito = true
+        }
+
+        if (browser === 'opera') {
+          args.push('-n')
         }
 
         if (options.incognito && browser && INCOGNITOS[browser]) {
