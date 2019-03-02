@@ -7,20 +7,23 @@ const utils = require('./utils')
 const MACOS_BROWSERS = {
   'chrome': 'google chrome',
   'firefox': 'firefox',
-  'safari': 'safari'
+  'safari': 'safari',
+  'brave': 'brave browser'
 }
 
 const WINDOWS_BROWSERS = {
   'chrome': 'Chrome',
   'ie': 'iexplore',
   'firefox': 'firefox',
-  'edge': 'microsoft-edge'
+  'edge': 'microsoft-edge',
+  'brave': 'Brave'
 }
 
 const INCOGNITOS = {
   'chrome': '--incognito',
   'firefox': '-private-window',
-  'ie': '-private'
+  'ie': '-private',
+  'brave': '--incognito'
 }
 
 const isExternalUrl = (location) => {
@@ -91,7 +94,7 @@ const open = (location, options) => {
           app = WINDOWS_BROWSERS[browser]
         }
 
-        if (options.incognito && browser) {
+        if (options.incognito && browser && INCOGNITOS[browser]) {
           appArgs.push(INCOGNITOS[browser])
         }
       }
