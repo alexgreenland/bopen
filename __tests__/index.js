@@ -34,7 +34,7 @@ describe('On Windows with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in the background', () => {
     return bopen('http://example.com/', {
       background: true,
@@ -46,7 +46,7 @@ describe('On Windows with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in incognito in the background', () => {
     return bopen('http://example.com/', {
       background: true,
@@ -121,7 +121,7 @@ describe('On Windows with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Firefox', () => {
     return bopen('http://example.com/', {
       browser: 'firefox',
@@ -133,7 +133,7 @@ describe('On Windows with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Firefox in incognito', () => {
     return bopen('http://example.com/', {
       browser: 'firefox',
@@ -168,7 +168,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a file URL', () => {
     return bopen('file:///Users/ajrg', {
       outputOnly: outputOnly,
@@ -180,7 +180,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a file path', () => {
     return bopen('/Users/ajrg', {
       outputOnly: outputOnly
@@ -191,7 +191,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a file URL with a file', () => {
     return bopen('file:///Users/ajrg/test.app', {
       outputOnly: outputOnly,
@@ -203,7 +203,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a file path with a file', () => {
     return bopen('file:///Users/ajrg/test.app', {
       outputOnly: outputOnly,
@@ -252,7 +252,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Chrome in the background', () => {
     return bopen('http://example.com/', {
       browser: 'chrome',
@@ -265,7 +265,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Chrome in incognito in the background', () => {
     return bopen('http://example.com/', {
       browser: 'chrome',
@@ -279,7 +279,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Chrome with specified first args', () => {
     return bopen('http://example.com/', {
       browser: 'chrome',
@@ -292,7 +292,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Chrome with specified app args', () => {
     return bopen('http://example.com/', {
       browser: 'chrome',
@@ -305,7 +305,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a URL in Chrome with specified first args and app args', () => {
     return bopen('http://example.com/', {
       browser: 'chrome',
@@ -356,7 +356,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-    
+
   test('opens a path in the default application', () => {
     return bopen('package.json', {
       outputOnly: outputOnly
@@ -367,7 +367,19 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
+  test('opens a path in the default application in the background', () => {
+    return bopen('package.json', {
+      background: true,
+      outputOnly: outputOnly
+    }).then((result) => {
+      expect(result).toEqual({
+        cmd: 'open',
+        args: ['-g', 'package.json']
+      })
+    })
+  })
+
   test('opens a path in the specified application', () => {
     return bopen('package.json', {
       app: 'preview',
@@ -379,7 +391,7 @@ describe('On macOS with Chrome as default browser', () => {
       })
     })
   })
-  
+
   test('opens a path with outputOnly not set', () => {
     return bopen('index.js', {
     }).then((result) => {
@@ -387,7 +399,7 @@ describe('On macOS with Chrome as default browser', () => {
       expect(result.args).toEqual(['index.js'])
     })
   })
-  
+
   test('fails correctly with undefined location', () => {
     return bopen(undefined, {
       outputOnly: outputOnly
@@ -395,7 +407,7 @@ describe('On macOS with Chrome as default browser', () => {
       expect(result).toEqual(new Error('No location specified'))
     })
   })
-  
+
   test('fails correctly with null location', () => {
     return bopen(null, {
       outputOnly: outputOnly
