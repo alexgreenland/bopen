@@ -71,10 +71,10 @@ const open = (location, options) => {
           }
           appArgs.push(INCOGNITOS[browser])
         }
+      }
 
-        if (options.background) {
-          args.push('-g')
-        }
+      if (options.background) {
+        args.push('-g')
       }
 
       if (app) {
