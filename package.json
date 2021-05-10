@@ -23,8 +23,8 @@
     "x-default-browser": "0.4.0"
   },
   "devDependencies": {
-    "eslint": "7.11.0",
-    "jest": "26.5.3"
+    "eslint": "7.26.0",
+    "jest": "26.6.3"
   },
   "repository": {
     "type": "git",
